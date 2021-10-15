@@ -12,7 +12,7 @@ const db = (async () => {
 async function getOhmById(id) {
     const _db = await db;
     const ohm = _db.get('ohms')
-        .find({ id })
+        .find({ trackingId: id })
         .value()
 
     return ohm;

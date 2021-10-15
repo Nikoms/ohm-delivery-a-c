@@ -4,6 +4,8 @@ var app = express();
 const bodyParser = require('body-parser')
 const Utils = require('./utils');
 app.use(bodyParser.json())
+const cors = require('cors');
+app.use(cors());
 
 function serve() {
     app.get('/ohms/:id', async (req, res) => {
