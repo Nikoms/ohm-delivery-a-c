@@ -1,0 +1,78 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+input, button, .btn{
+    padding: 0.5rem 1rem;
+}
+
+.field{
+    margin-bottom: 1rem;
+}
+
+.container{
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.tracking__result{
+    background-color: lightgray;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tracking__result dd{
+    margin-left: 0;
+    margin-bottom: 1rem;
+}
+
+.tracking__result dt{
+    font-weight: bold;
+}
+
+.result__history, .result__customer, .result__details{
+    padding: 2rem;
+}
+
+.result__history{
+    width: 100%;
+    display: flex;
+}
+
+.history__item{
+    display: flex;
+    margin-right: 1rem;
+    color: white;
+}
+
+.history__content{
+    background-color: black;
+    padding: 1rem;
+}
+
+.history__arrow{
+    height: 100%;
+    border-top: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    border-left: 1.5rem solid black;
+    border-right: 1.5rem solid transparent;
+}
+
+.result__customer, .result__details{
+    width: 50%;
+}
+
+.tracking__query{
+    background-color: lightblue;
+    padding: 3rem;
+}
+
+.tracking__query form{
+
+    display: flex;
+}
