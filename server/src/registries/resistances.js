@@ -5,10 +5,22 @@ const config = require("../../db.config.json");
 
 const db = (async () => {
   const _db = await low(adapter);
-
   await _db.defaults(config).write();
   return _db;
 })();
+
+const STATUS_FLOW = [["CREATED"], ["PREPARING"], ["READY"], ["IN_DELIVERY"], ["DELIVERED", "REFUSED"]];
+
+/**
+ * Check if ohm can transition from its current status to "status"
+ */
+function canTransitionTo(ohm, status) {
+  let lastStatus = ohm.history.slice(-1)[0].state;
+  let currentStatus = STATUS_FLOW.findIndex((statuses) => statuses.includes(lastStatus));
+  let nextStatuses = currentStatus < STATUS_FLOW.length - 1 ? STATUS_FLOW[currentStatus + 1] : [];
+
+  return nextStatuses.includes(status);
+}
 
 module.exports = {
   getOhmById: async function (code) {
@@ -30,26 +42,7 @@ module.exports = {
       .value();
 
     if (ohm) {
-      let lastStatus = ohm.history.slice(-1)[0].state;
-
-      let statusFlow = [
-        ["CREATED"],
-        ["PREPARING"],
-        ["READY"],
-        ["IN_DELIVERY"],
-        ["DELIVERED", "REFUSED"]
-      ];
-
-      let currentStatus = statusFlow.findIndex((statuses) =>
-        statuses.includes(lastStatus)
-      );
-
-      let nextStatuses =
-        currentStatus < statusFlow.length - 1
-          ? statusFlow[currentStatus + 1]
-          : [];
-
-      if (nextStatuses.includes(status)) {
+      if (canTransitionTo(ohm, status)) {
         let newHistoryItem = {
           state: status,
           at: new Date().getTime().toString()
@@ -60,8 +53,7 @@ module.exports = {
 
         ohm.history.push(newHistoryItem);
 
-
-        if(process.env.NODE_ENV != 'test') _db.write();
+        if (process.env.NODE_ENV != "test") _db.write();
         return ohm;
       } else {
         throw `Invalid status: ${status}`;

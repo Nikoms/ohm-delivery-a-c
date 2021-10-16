@@ -7,10 +7,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="styles/_normalize.css" />
     <link rel="stylesheet" type="text/css" href="styles/_html.css" />
@@ -22,36 +19,28 @@
   </head>
   <body>
     <div ng-app="ohm-delivery" ng-controller="tracking" class="container">
+      <!--------------- QUERY FORM ----------------->
       <div class="tracking__query">
         <form ng-submit="sendData()">
           <div class="field">
-            <input
-              id="tracking"
-              type="text"
-              autofocus
-              ng-model="trackingId"
-              placeholder="Enter your tracking id"
-            />
+            <input id="tracking" type="text" autofocus ng-model="trackingId" placeholder="Enter your tracking id" />
           </div>
           <div class="field">
             <button id="formBtn" type="submit">Submit</button>
           </div>
         </form>
       </div>
+      <div ng-if="errorMessage" class="banner banner--danger">{{errorMessage}}</div>
 
-      <div ng-if="errorMessage" class="banner banner--danger">
-        {{errorMessage}}
-      </div>
-
+      <!--------------- RESULT PANEL ----------------->
       <div ng-if="resistance" class="tracking__result">
-        <div
-          ng-if="resistance.history.slice(-1)[0].rejectionReason"
-          class="banner banner--warning"
-        >
-          <strong>The parcel has been rejected for the following reason: </strong>
+        <!-- BANNERS -->
+        <div ng-if="resistance.history.slice(-1)[0].rejectionReason" class="banner banner--warning">
+          <strong>The parcel has been rejected for the following reason:</strong>
           <br />
           {{resistance.history.slice(-1)[0].rejectionReason}}
         </div>
+        <!-- STATUS HISTORY -->
         <div class="result__history">
           <div
             ng-repeat="item in resistance.history"
@@ -61,13 +50,9 @@
             <div class="history__arrow"></div>
           </div>
 
-          <div
-            ng-if="resistance.isDriver && resistance.history.slice(-1)[0].state == 'IN_DELIVERY'"
-          >
+          <div ng-if="resistance.isDriver && resistance.history.slice(-1)[0].state == 'IN_DELIVERY'">
             <div
-              class="
-                history__item history__item--clickable history__item--success
-              "
+              class="history__item history__item--clickable history__item--success"
               ng-click="changeStatus('DELIVERED')"
             >
               <div class="history__content">Delivered</div>
@@ -75,9 +60,7 @@
             </div>
             <div style="height: 1rem"></div>
             <div
-              class="
-                history__item history__item--clickable history__item--danger
-              "
+              class="history__item history__item--clickable history__item--danger"
               ng-click="changeStatus('REFUSED')"
             >
               <div class="history__content">Refused</div>
@@ -85,6 +68,7 @@
             </div>
           </div>
         </div>
+        <!-- RESULT DETAILS -->
         <div class="result__details">
           <div class="result__customer">
             <dl>
@@ -95,10 +79,7 @@
             </dl>
           </div>
           <div class="result__resistance">
-            <h2>
-              Resistance: {{resistance.description.volts /
-              resistance.description.amperes}} Ohm
-            </h2>
+            <h2>Resistance: {{resistance.description.volts / resistance.description.amperes}} Ohm</h2>
           </div>
         </div>
       </div>

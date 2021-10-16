@@ -1,8 +1,8 @@
 angular
   .module("ohm-delivery", [])
-  .filter('humanize', function() {
-    return function(input) {
-      return input.toLowerCase().replaceAll('_', ' ');
+  .filter("humanize", function () {
+    return function (input) {
+      return input.toLowerCase().replaceAll("_", " ");
     };
   })
   .controller("tracking", function ($scope, $http) {
