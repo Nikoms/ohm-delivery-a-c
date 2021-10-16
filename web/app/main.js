@@ -32,7 +32,7 @@ angular
           $scope.resistance = result.data;
         },
         (error) => {
-          $scope.errorMessage = "Cannot fetch the data from server";
+          $scope.errorMessage = "This tracking code is not valid";
         }
       );
     };

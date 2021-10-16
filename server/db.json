@@ -30,11 +30,6 @@
         {
           "state": "IN_DELIVERY",
           "at": "123456789"
-        },
-        {
-          "state": "REFUSED",
-          "at": "1634364209344",
-          "rejectionReason": "Cannot deliver the parcel"
         }
       ]
     },

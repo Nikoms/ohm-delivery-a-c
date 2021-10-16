@@ -1,10 +1,11 @@
 const low = require("lowdb");
 const FileAsync = require("lowdb/adapters/FileAsync");
 const adapter = new FileAsync("db.json");
-const config = require("../db.config.json");
+const config = require("../../db.config.json");
 
 const db = (async () => {
   const _db = await low(adapter);
+
   await _db.defaults(config).write();
   return _db;
 })();
@@ -59,7 +60,8 @@ module.exports = {
 
         ohm.history.push(newHistoryItem);
 
-        _db.write();
+
+        if(process.env.NODE_ENV != 'test') _db.write();
         return ohm;
       } else {
         throw `Invalid status: ${status}`;
