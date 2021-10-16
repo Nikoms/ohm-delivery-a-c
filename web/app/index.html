@@ -36,12 +36,31 @@
       </div>
 
       <div ng-if="resistance" class="tracking__result">
+        <div ng-if="resistance.comment" class="banner banner--warning">
+          {{resistance.comment}}
+        </div>
         <div class="result__history">
           <div ng-repeat="item in resistance.history" class="history__item">
             <div class="history__content">
               {{item.state}}
             </div>
             <div class="history__arrow"></div>
+          </div>
+
+          <div ng-if="resistance.isDriver && resistance.history.slice(-1)[0].state == 'IN_DELIVERY'">
+            <div class="history__item history__item--clickable history__item--success" ng-click="changeStatus('DELIVERED')">
+              <div class="history__content">
+                DELIVERED
+              </div>
+              <div class="history__arrow"></div>
+            </div>
+            <div style="height: 1rem"></div>
+            <div class="history__item history__item--clickable history__item--danger" ng-click="changeStatus('REFUSED')">
+              <div class="history__content">
+                REFUSED
+              </div>
+              <div class="history__arrow"></div>
+            </div>
           </div>
         </div>
         <div class="result__customer">

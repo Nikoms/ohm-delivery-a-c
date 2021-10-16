@@ -14,13 +14,28 @@ input, button, .btn{
     margin-bottom: 1rem;
 }
 
+.banner{
+    padding: 2rem;
+    width: 100%;
+}
+
+.banner--danger{
+    background-color: darkorange;
+}
+
+.banner--warning{
+    background-color: lightyellow;
+}
+
 .container{
-    max-width: 1000px;
+    max-width: 1200px;
     margin: auto;
     padding: 2rem;
+    overflow: auto;
 }
 
 .tracking__result{
+    overflow: auto;
     background-color: lightgray;
     display: flex;
     flex-wrap: wrap;
@@ -42,25 +57,46 @@ input, button, .btn{
 .result__history{
     width: 100%;
     display: flex;
+    align-items: center;
 }
 
 .history__item{
     display: flex;
     margin-right: 1rem;
     color: white;
+    height: 50px;
+    --item-color: black;
+}
+
+.history__item--clickable{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.history__item--clickable:hover{
+    opacity: 1;
+}
+
+.history__item--success{
+    --item-color: darkgreen;
+}
+
+.history__item--danger{
+    --item-color: darkred;
 }
 
 .history__content{
-    background-color: black;
+    background-color: var(--item-color);
     padding: 1rem;
+    height: 50px;
 }
 
 .history__arrow{
-    height: 100%;
-    border-top: 1.5rem solid transparent;
-    border-bottom: 1.5rem solid transparent;
-    border-left: 1.5rem solid black;
-    border-right: 1.5rem solid transparent;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 25px solid var(--item-color);
+    border-right: 25px solid transparent;
+    height: 50px;
 }
 
 .result__customer, .result__details{
