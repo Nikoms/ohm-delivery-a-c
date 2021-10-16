@@ -1,0 +1,41 @@
+html {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+input,
+button,
+.btn {
+  padding: 0.7rem 1.4rem;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 0;
+  outline: none;
+}
+
+input:hover, button:hover, .btn:hover{
+  border: 1px solid darkgray;
+}
+
+input:focus, button:focus, .btn:focus{
+  border: 1px solid black;
+}
+
+.field {
+  margin-right: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+  overflow: auto;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}

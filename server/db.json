@@ -3,8 +3,9 @@
     {
       "id": "0",
       "trackingId": "1e62adfe",
+      "driverCode": "50f91bafbb",
       "status": "IN_DELIVERY",
-      "comment": null,
+      "comment": "dsffsdfds",
       "description": {
         "volts": 12,
         "amperes": 2
@@ -29,12 +30,18 @@
         {
           "state": "IN_DELIVERY",
           "at": "123456789"
+        },
+        {
+          "state": "REFUSED",
+          "at": "1634364209344",
+          "rejectionReason": "Cannot deliver the parcel"
         }
       ]
     },
     {
       "id": "1",
       "trackingId": "1da15ffe",
+      "driverCode": "8511d7be3b",
       "status": "CREATED",
       "comment": null,
       "description": {

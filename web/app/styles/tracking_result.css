@@ -1,0 +1,39 @@
+.result__history,
+.result__details {
+  padding: 2rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: flex;
+  width: 100%;
+}
+
+.result__history {
+  overflow: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+    white-space: nowrap;
+}
+
+.result__details {
+  flex-wrap: wrap;
+}
+
+.result__details dd {
+  margin-left: 0;
+  margin-bottom: 1rem;
+}
+
+.result__details dt {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.result__resistance,
+.result__customer {
+  flex-grow: 1;
+  min-width: 200px;
+  margin-top: 0;
+}

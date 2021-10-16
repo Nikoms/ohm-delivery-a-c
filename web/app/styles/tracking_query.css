@@ -1,0 +1,9 @@
+
+.tracking__query {
+    margin-bottom: 1rem;
+}
+
+
+.tracking__query form {
+    display: flex;
+}
