@@ -4,7 +4,6 @@
         "id": "0",
         "trackingId": "1e62adfe",
         "driverCode": "50f91bafbb",
-        "status": "IN_DELIVERY",
         "comments": [],
         "description": {
           "volts": 12,
@@ -36,7 +35,6 @@
       {
         "id": "1",
         "trackingId": "1da15ffe",
-        "status": "CREATED",
         "comments": [],
         "description": {
           "volts": 12,

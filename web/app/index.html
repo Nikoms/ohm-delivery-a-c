@@ -21,7 +21,7 @@
     <div ng-app="ohm-delivery" ng-controller="tracking" class="container">
       <!--------------- QUERY FORM ----------------->
       <div class="tracking__query">
-        <form ng-submit="sendData()">
+        <form ng-submit="getResistance()">
           <div class="field">
             <input id="tracking" type="text" autofocus ng-model="trackingId" placeholder="Enter your tracking id" />
           </div>
@@ -93,7 +93,7 @@
             </div>
           </div>
 
-          <form ng-submit="addComment()">
+          <form ng-submit="addComment(newComment)">
             <div class="field"><textarea ng-model="newComment"></textarea></div>
             <input type="submit" value="Add comment" />
           </form>

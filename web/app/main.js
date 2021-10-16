@@ -26,7 +26,7 @@ angular
           }
         );
     };
-    $scope.sendData = function () {
+    $scope.getResistance = function () {
       $http.get(`http://localhost:3000/ohms/${this.trackingId}`).then(
         (result) => {
           $scope.resistance = result.data;
@@ -41,6 +41,7 @@ angular
     $scope.addComment = function () {
       $http.post(`http://localhost:3000/ohms/${this.trackingId}/comments`, {comment: this.newComment}).then(
         (result) => {
+          this.newComment = null;
           $scope.resistance = result.data;
           $scope.errorMessage = '';
         },

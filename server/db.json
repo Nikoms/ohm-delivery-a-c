@@ -4,8 +4,9 @@
       "id": "0",
       "trackingId": "1e62adfe",
       "driverCode": "50f91bafbb",
-      "status": "IN_DELIVERY",
-      "comments": [],
+      "comments": [
+        [ ]
+      ],
       "description": {
         "volts": 12,
         "amperes": 2
