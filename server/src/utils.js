@@ -20,7 +20,7 @@ module.exports = {
 
     return ohm;
   },
-  setOhmStatus: async function (code, status, details) {
+  setOhmStatus: async function (code, status, rejectionReason) {
     const _db = await db;
 
     const ohm = _db
@@ -49,14 +49,15 @@ module.exports = {
           : [];
 
       if (nextStatuses.includes(status)) {
-        ohm.history.push({
+        let newHistoryItem = {
           state: status,
           at: new Date().getTime().toString()
-        });
-
+        };
         if (status == "REFUSED") {
-          ohm.comment = details;
+          newHistoryItem.rejectionReason = rejectionReason;
         }
+
+        ohm.history.push(newHistoryItem);
 
         _db.write();
         return ohm;

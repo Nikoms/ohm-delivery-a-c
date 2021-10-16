@@ -35,7 +35,7 @@ function serve() {
       const ohm = await Utils.setOhmStatus(
         req.params.id,
         req.body.status,
-        req.body.details
+        req.body.rejectionReason
       );
 
       if (ohm) {

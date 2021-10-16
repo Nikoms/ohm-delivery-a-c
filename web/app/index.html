@@ -36,8 +36,8 @@
       </div>
 
       <div ng-if="resistance" class="tracking__result">
-        <div ng-if="resistance.comment" class="banner banner--warning">
-          {{resistance.comment}}
+        <div ng-if="resistance.history.slice(-1)[0].rejectionReason" class="banner banner--warning">
+          {{resistance.history.slice(-1)[0].rejectionReason}}
         </div>
         <div class="result__history">
           <div ng-repeat="item in resistance.history" class="history__item">

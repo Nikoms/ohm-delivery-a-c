@@ -2,15 +2,15 @@ angular
   .module("ohm-delivery", [])
   .controller("tracking", function ($scope, $http) {
     $scope.changeStatus = function (status) {
-      let details = "";
+      let rejectionReason = "";
       if (status == "REFUSED") {
-        details = prompt("Why did the customer refuse the parcel?");
+        rejectionReason = prompt("Why did the customer refuse the parcel?");
       }
 
       $http
         .patch(`http://localhost:3000/ohms/${this.trackingId}`, {
           status,
-          details
+          rejectionReason
         })
         .then(
           (result) => {
