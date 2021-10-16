@@ -1,16 +1,16 @@
 .result__history,
+.result__comments,
 .result__details {
   padding: 2rem;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   background-color: white;
   display: flex;
   width: 100%;
+  margin-top: 1rem;
 }
 
 .result__history {
   overflow: auto;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -36,4 +36,27 @@
   flex-grow: 1;
   min-width: 200px;
   margin-top: 0;
+}
+
+.result__comments{
+  display: block;
+}
+
+.result__comments textarea{
+  background-color: lightyellow;
+}
+
+
+.comment{
+  margin-bottom: 1rem;
+  background-color: lightyellow;
+  width: 500px;
+  padding: 1rem;
+  display: flex;
+  font-size: 0.8rem;
+}
+
+.comment__author{
+  font-weight: bold;
+  margin-right: 0.5rem;
 }

@@ -4,7 +4,7 @@ function serialize(ohm) {
   return {
     description: ohm.description,
     client: ohm.client,
-    comment: ohm.comment,
+    comments: ohm.comments,
     history: ohm.history
   };
 }
@@ -23,13 +23,19 @@ module.exports = function (app) {
     }
   });
 
+  app.post("/ohms/:id/comments", async (req, res) => {
+    const ohm = await ResistancesRegistry.addComment(req.params.id, req.body.comment);
+
+    if (ohm) {
+      res.send(serialize(ohm));
+    } else {
+      res.status(404).send({ error: "Resistance not found" });
+    }
+  });
+
   app.patch("/ohms/:id", async (req, res) => {
     try {
-      const ohm = await ResistancesRegistry.setOhmStatus(
-        req.params.id,
-        req.body.status,
-        req.body.rejectionReason
-      );
+      const ohm = await ResistancesRegistry.setOhmStatus(req.params.id, req.body.status, req.body.rejectionReason);
 
       if (ohm) {
         res.send({

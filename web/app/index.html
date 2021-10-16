@@ -82,7 +82,24 @@
             <h2>Resistance: {{resistance.description.volts / resistance.description.amperes}} Ohm</h2>
           </div>
         </div>
+        <!-- RESULT COMMENTS -->
+        <div class="result__comments">
+          <div class="comment" ng-repeat="comment in resistance.comments">
+            <div class="comment__author">
+              {{comment[0] ? 'Driver': 'Customer'}}:
+            </div>
+            <div class="comment__content">
+              {{comment[1]}}
+            </div>
+          </div>
+
+          <form ng-submit="addComment()">
+            <div class="field"><textarea ng-model="newComment"></textarea></div>
+            <input type="submit" value="Add comment" />
+          </form>
+        </div>
       </div>
+
     </div>
   </body>
 </html>

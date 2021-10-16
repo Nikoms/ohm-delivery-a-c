@@ -30,9 +30,22 @@ angular
       $http.get(`http://localhost:3000/ohms/${this.trackingId}`).then(
         (result) => {
           $scope.resistance = result.data;
+          $scope.errorMessage = '';
         },
         (error) => {
+          $scope.resistance = null;
           $scope.errorMessage = "This tracking code is not valid";
+        }
+      );
+    };
+    $scope.addComment = function () {
+      $http.post(`http://localhost:3000/ohms/${this.trackingId}/comments`, {comment: this.newComment}).then(
+        (result) => {
+          $scope.resistance = result.data;
+          $scope.errorMessage = '';
+        },
+        (error) => {
+          $scope.errorMessage = "Cannot add comment";
         }
       );
     };

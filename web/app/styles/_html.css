@@ -9,8 +9,13 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
+.field{
+  margin-bottom: 1rem;
+}
+
 input,
 button,
+textarea,
 .btn {
   padding: 0.7rem 1.4rem;
   border: 1px solid lightgray;

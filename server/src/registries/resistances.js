@@ -61,5 +61,22 @@ module.exports = {
     }
 
     return ohm;
+  },
+  addComment: async function (code, comment) {
+    const _db = await db;
+
+    const ohm = _db
+      .get("ohms")
+      .find((r) => r.trackingId == code || r.driverCode == code)
+      .value();
+
+    if (ohm) {
+      let isDriver = code == ohm.driverCode;
+      ohm.comments.push([isDriver, comment]);
+
+      if (process.env.NODE_ENV != "test") _db.write();
+    }
+
+    return ohm;
   }
 };
